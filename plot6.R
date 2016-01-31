@@ -40,6 +40,13 @@ em <- blem %>% group_by( City, year ) %>% summarise(avg=sum(Emissions))
 ####	Plot total emissions by year for Baltimore only, broken out by
 ####	the type of source
 
+###	Open device for plotting
+png( 
+		filename = pngFile
+		, width = 480
+		, height = 480
+	)
+
 g <- qplot(
 				x = year
 				, y = avg
@@ -56,8 +63,11 @@ g <- qplot(
 		
 		labs( title="Motor Vehicle PM2.5" )
 
-ggsave( pngFile, plot = g )
+#ggsave( pngFile, plot = g )
+print(g)
 
+###	Close the device
+dev.off()
 
 
 
